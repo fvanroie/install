@@ -8,13 +8,13 @@ def create_manifest():
     for f in files:
         if f.endswith(".bin"):
             pos = f.find('full')-1
-            base = f[0:pos]
             if pos >= 0:
+                base = f[0:pos]
                 print(base)
 
                 pos = f.find('MB_')+3
                 ext = f.find('.bin')-1
-                manifest = "full{}{}.json".format(os.path.sep, f[0:pos-1])
+                manifest = "{}{}{}.json".format(path, os.path.sep, f[0:pos-1])
                 long_version = f[pos:ext]
                 short_version = long_version.split('-')[0]
                 if pos >= 0:
