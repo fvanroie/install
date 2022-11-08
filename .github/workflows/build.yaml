@@ -1,0 +1,95 @@
+name: Build branch
+
+on:
+  release:
+    types: [created]
+  push:
+    branches:
+      - master
+    paths-ignore:
+      - '**.md'
+      - '**.yml'
+      - '**.yaml'
+  workflow_dispatch:
+
+jobs:
+  build_esp32:
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        environment:
+          - out: az-touch
+            env: "az-touch-mod-esp32_ili9341_4MB -e az-touch-mod-esp32_ili9341_8MB"
+          - env: d1-mini-esp32_ili9341
+            out: d1-mini-esp32
+          - env: d1-r32-waveshare_ili9486
+            out: d1-r32-espduino32
+          - env: d1-r32-unoshield_ili9341_adc
+            out: d1-r32-espduino32
+          - env: d1-r32-unoshield_ili9486_adc
+            out: d1-r32-espduino32
+          - env: esp32-one_st7796
+            out: waveshare
+          - env: esp32-one_ili9486
+            out: waveshare
+          - env: esp32-touchdown
+            out: esp32-touchdown
+          - out: freetouchdeck
+            env: "freetouchdeck_4MB -e freetouchdeck_8MB"
+          - out: featherwing
+            env: "huzzah32-featherwing-24 -e huzzah32-featherwing-35"
+          - env: lanbon_l8
+            out: lanbon_l8
+          - env: lolin-d32-pro_ili9341
+            out: lolin-d32-pro
+          - env: m5stack-core2
+            out: m5stack
+          - out: makerfabs
+            env: "makerfabs-tft35-cap -e makerfabs-s3-tft35-spi"
+          - out: sunton
+            env: "esp32-3248s035c_4MB -e esp32-3248s035r_4MB"
+          - out: ttgo
+            env: "ttgo-t7-v1.5_ili9341_4MB -e ttgo-t7-v1.5_ili9341_16MB -e ttgo-lilygo-pi_ili9481 -e ttgo-lilygo-pi_st7796"
+          - out: wireless-tag
+            env: "wt32-sc01_4MB -e wt32-sc01_16MB -e wt-86-32-3zw1 -e wt32-sc01-plus_8MB"
+          - env: yeacreate-nscreen32
+            out: yeacreate
+
+    steps:
+      - name: Cache pip
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+      - name: Cache PlatformIO
+        uses: actions/cache@v3
+        with:
+          path: ~/.platformio
+          key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+      - name: List all files in current folder
+        run: |
+          ls -la
+      - name: Create release and upload firmware
+        run: |
+          python .\build.py
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    #- name: Create release and upload firmware
+    #  run: |
+    #    set -x
+    #    assets=()
+    #    for asset in build_output/firmware/*.bin; do
+    #      assets+=("-a" "$asset")
+    #    done
+    #    tag_name="${GITHUB_REF##*/}"
+    #    hub release create "${assets[@]}" -m "$tag_name" "$tag_name"
+    #  env:
+    #    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
