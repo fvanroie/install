@@ -1,7 +1,7 @@
 import requests, zipfile, os, json
 
 def create_manifest():
-    path = 'firmware'
+    path = 'html/firmware'
 
     files = os.listdir(path)
 

@@ -8,11 +8,11 @@ def create_manifest():
     for f in files:
         print(f)
 
-# OUTPUT_DIR = 'html'
-# if not os.path.isdir(OUTPUT_DIR):
-#     os.mkdir(OUTPUT_DIR)
-# OUTPUT_DIR = 'html' + os.path.sep
-OUTPUT_DIR = ''
+OUTPUT_DIR = 'html'
+if not os.path.isdir(OUTPUT_DIR):
+    os.mkdir(OUTPUT_DIR)
+OUTPUT_DIR = 'html' + os.path.sep
+# OUTPUT_DIR = ''
 
 for d in ['firmware', 'ota', 'full']:
     if not os.path.isdir("{}{}".format(OUTPUT_DIR, d)):
