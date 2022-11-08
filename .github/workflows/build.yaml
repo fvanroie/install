@@ -5,7 +5,7 @@ on:
     types: [created]
   push:
     branches:
-      - master
+      - main
     paths-ignore:
       - '**.md'
       - '**.yml'
@@ -49,6 +49,11 @@ jobs:
       - name: Download and Extract build artefacts
         run: |
           python ./build.py
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Create manifests
+        run: |
+          python ./manifest.py
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: List all files in subfolders
