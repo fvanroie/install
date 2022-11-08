@@ -8,7 +8,11 @@ def create_manifest():
     for f in files:
         print(f)
 
-OUTPUT_DIR = ''
+OUTPUT_DIR = 'html'
+if not os.path.isdir(OUTPUT_DIR):
+    os.mkdir(OUTPUT_DIR)
+OUTPUT_DIR = 'html' + os.path.sep
+
 for d in ['firmware', 'ota', 'full']:
     if not os.path.isdir("{}{}".format(OUTPUT_DIR, d)):
         os.mkdir("{}{}".format(OUTPUT_DIR, d))
@@ -44,7 +48,8 @@ for artifact in json_data['artifacts']:
     for key, value in link.items():
         print(key, ' : ', value)
 
-    zip_filename = f"firmware{os.path.sep}{artifact['name']}.zip"
+    zip_filename = f"{OUTPUT_DIR}firmware{os.path.sep}{artifact['name']}.zip"
+    destination = f"{OUTPUT_DIR}firmware"
     with open(zip_filename, 'wb') as f:
         response = requests.get(artifact['archive_download_url'], headers=token)
         f.write(response.content)
@@ -53,10 +58,11 @@ for artifact in json_data['artifacts']:
         with zipfile.ZipFile(zip_filename) as z:
             for file in z.namelist():
                 print(f"{file}")
-                if file.find("_ota_") > 0:
-                    z.extract(file, path="ota")
-                if file.find("_full_") > 0:
-                    z.extract(file, path="full")
+                # if file.find("_ota_") > 0:
+                #     z.extract(file, path="ota")
+                # if file.find("_full_") > 0:
+                #     z.extract(file, path="full")
+                z.extract(file, path=destination)
             print("Extracted all ")
         # except:
         #     print("Invalid file")
