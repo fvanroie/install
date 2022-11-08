@@ -46,19 +46,11 @@ jobs:
       - name: List all files in current folder
         run: |
           ls -la
-      - name: Create release and upload firmware
+      - name: Download and Extract build artefacts
         run: |
           python ./build.py
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    #- name: Create release and upload firmware
-    #  run: |
-    #    set -x
-    #    assets=()
-    #    for asset in build_output/firmware/*.bin; do
-    #      assets+=("-a" "$asset")
-    #    done
-    #    tag_name="${GITHUB_REF##*/}"
-    #    hub release create "${assets[@]}" -m "$tag_name" "$tag_name"
-    #  env:
-    #    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: List all files in subfolders
+        run: |
+          ls -laR
