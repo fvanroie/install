@@ -20,8 +20,9 @@ jobs:
       fail-fast: false
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v2
         with:
+          ref: ${{ github.head_ref }}
           submodules: 'true'
       - name: Cache pip
         uses: actions/cache@v3
