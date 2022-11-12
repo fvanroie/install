@@ -22,7 +22,12 @@ def create_manifest():
 
                 data = {"name":"openHASP", "version": short_version, "home_assistant_domain": "openhasp", "funding_url": "https://ko-fi.com/openhasp", "new_install_prompt_erase": True, "builds": "d"}
                 builds = []
-                builds.append({ "chipFamily": "ESP32", "improv": False })
+                if "gs-3te" in base:
+                    builds.append({ "chipFamily": "ESP32S3", "improv": False })
+                elif "wt32-sc01-plus" in base:
+                    builds.append({ "chipFamily": "ESP32S3", "improv": False })
+                else:
+                    builds.append({ "chipFamily": "ESP32", "improv": False })
                 parts = []
                 parts.append({ "path": f, "offset": 0 })
                 builds[0]["parts"] = parts
