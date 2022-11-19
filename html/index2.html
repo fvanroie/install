@@ -1,48 +1,42 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ag-grid-enterprise/styles/ag-grid.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ag-grid-enterprise/styles/ag-theme-alpine.css">
-    <script type="module">
-        import {
-            Grid
-        } from 'https://cdn.jsdelivr.net/npm/ag-grid-community@28.2.1/dist/ag-grid-community.cjs.min.js';
-
-        const columnDefs = [
-            { field: "make" },
-            { field: "model" },
-            { field: "price" }
-        ];
-
-        // specify the data
-        const rowData = [
-            { make: "Toyota", model: `Corolla`, price: 35000 },
-            { make: "Ford", model: "Mondeo", price: 32000 },
-            { make: "Porsche", model: "Boxter", price: 72000 }
-        ];
-
-        // let the grid know which columns and what data to use
-        const gridOptions = {
-            defaultColDef: {
-                wrapText: true,
-                autoHeight: true,
-                resizable: true,
-                sortable: true,
-                filter: true
-            },
-            columnDefs: columnDefs,
-            rowData: rowData
-        };
-
-        // setup the grid after the page has finished loading
-        document.addEventListener('DOMContentLoaded', () => {
-            const gridDiv = document.querySelector('#myGrid');
-            new Grid(gridDiv, gridOptions);
-        });
-    </script>
+  <script src="https://unpkg.com/ag-grid/dist/ag-grid.min.noStyle.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/ag-grid/dist/styles/ag-grid.css">
+  <link rel="stylesheet" href="https://unpkg.com/ag-grid/dist/styles/ag-theme-balham.css">
 </head>
-
 <body>
-<div id="myGrid" style="height: 200px; width:500px;" class="ag-theme-alpine"></div>
+  <h1>Hello from ag-grid!</h1>
+  
+  <div id="myGrid" style="height: 600px;width:500px;" class="ag-theme-balham"></div>
+
+  <script type="text/javascript" charset="utf-8">
+    // specify the columns
+    var columnDefs = [
+      {headerName: "Make", field: "make"},
+      {headerName: "Model", field: "model"},
+      {headerName: "Price", field: "price"}
+    ];
+    
+    // specify the data
+    var rowData = [
+      {make: "Toyota", model: "Celica", price: 35000},
+      {make: "Ford", model: "Mondeo", price: 32000},
+      {make: "Porsche", model: "Boxter", price: 72000}
+    ];
+    
+    // let the grid know which columns and what data to use
+    var gridOptions = {
+      columnDefs: columnDefs,
+      rowData: rowData
+    };
+
+  // lookup the container we want the Grid to use
+  var eGridDiv = document.querySelector('#myGrid');
+
+  // create the grid passing in the div to use together with the columns & data we want to use
+  new agGrid.Grid(eGridDiv, gridOptions);
+
+  </script>
 </body>
 </html>
