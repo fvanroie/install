@@ -13,22 +13,200 @@
   <script type="text/javascript" charset="utf-8">
     // specify the columns
     var columnDefs = [
-      {headerName: "Make", field: "make"},
-      {headerName: "Model", field: "model"},
-      {headerName: "Price", field: "price"}
+      {headerName: "Firmware", field: "basename"},
+      {headerName: "Display", field: "Display"},
+      {headerName: "Touch", field: "Touch"}
     ];
     
     // specify the data
     var rowData = [
-      {make: "Toyota", model: "Celica", price: 35000},
-      {make: "Ford", model: "Mondeo", price: 32000},
-      {make: "Porsche", model: "Boxter", price: 72000}
+    [
+    {
+        "basename": "az-touch-mod-esp32",
+        "Display": "ili9341",
+        "disp_name": "ili9341",
+        "Touch": "xpt2046",
+        "flash": "4MB"
+    },
+    {
+        "basename": "az-touch-mod-esp32",
+        "Display": "ili9341",
+        "disp_name": "ili9341",
+        "Touch": "xpt2046",
+        "flash": "8MB"
+    },
+    {
+        "basename": "d1-mini-esp32",
+        "Display": "ili9341",
+        "disp_name": "ili9341",
+        "Touch": "xpt2046",
+        "flash": "4MB"
+    },
+    {
+        "basename": "d1-r32-unoshield",
+        "Display": "ili9341",
+        "disp_name": "ili9341",
+        "Touch": "Analog",
+        "t_name": "_adc",
+        "flash": "4MB"
+    },
+    {
+        "basename": "d1-r32-unoshield",
+        "Display": "ili9486",
+        "disp_name": "ili9486",
+        "Touch": "Analog",
+        "t_name": "_adc",
+        "flash": "4MB"
+    },
+    {
+        "basename": "d1-r32-waveshare",
+        "Display": "ili9486",
+        "disp_name": "ili9486",
+        "Touch": "xpt2046",
+        "flash": "4MB"
+    },
+    {
+        "basename": "esp32-3248s035",
+        "Touch": "gt911",
+        "t_name": "c",
+        "flash": "4MB"
+    },
+    {
+        "basename": "esp32-3248s035",
+        "Touch": "xpt2046",
+        "t_name": "r",
+        "flash": "4MB"
+    },
+    {
+        "basename": "esp32-one",
+        "Display": "ili9486",
+        "disp_name": "ili9486",
+        "Touch": "xpt2046",
+        "flash": "4MB"
+    },
+    {
+        "basename": "esp32-one",
+        "Display": "st7796",
+        "disp_name": "st7796",
+        "Touch": "xpt2046",
+        "flash": "4MB"
+    },
+    {
+        "basename": "esp32-touchdown",
+        "Display": "",
+        "disp_name": "gt911",
+        "Touch": "c",
+        "t_name": "4MB"
+    },
+    {
+        "basename": "freetouchdeck",
+        "Touch": "xpt2046",
+        "t_name": "r",
+        "flash": "4MB"
+    },
+    {
+        "basename": "freetouchdeck",
+        "Touch": "xpt2046",
+        "t_name": "r",
+        "flash": "8MB"
+    },
+    {
+        "basename": "gs-t3e",
+        "Display": "ST7701S",
+        "Touch": "gt911",
+        "flash": "16MB"
+    },
+    {
+        "basename": "huzzah32-featherwing-24",
+        "Display": "ili9341",
+        "disp_name": "ili9341",
+        "flash": "4MB"
+    },
+    {
+        "basename": "huzzah32-featherwing-35",
+        "flash": "4MB"
+    },
+    {
+        "basename": "lanbon_l8",
+        "flash": "8MB"
+    },
+    {
+        "basename": "lilygo-lily-pi",
+        "Display": "ili9481",
+        "disp_name": "ili9481",
+        "flash": "16MB"
+    },
+    {
+        "basename": "lilygo-lily-pi",
+        "Display": "st7796",
+        "disp_name": "st7796",
+        "flash": "16MB"
+    },
+    {
+        "basename": "lolin-d32-pro",
+        "Display": "ili9341",
+        "disp_name": "ili9341",
+        "Touch": "xpt2046",
+        "flash": "16MB"
+    },
+    {
+        "basename": "m5stack-core2",
+        "flash": "16MB"
+    },
+    {
+        "basename": "makerfabs-s3-tft35-spi",
+        "flash": "16MB"
+    },
+    {
+        "basename": "makerfabs-tft35",
+        "t_name": "cap",
+        "flash": "16MB"
+    },
+    {
+        "basename": "ttgo-t7-v1.5",
+        "Display": "ili9341",
+        "disp_name": "ili9341",
+        "Touch": "xpt2046",
+        "flash": "16MB"
+    },
+    {
+        "basename": "ttgo-t7-v1.5",
+        "Display": "ili9341",
+        "disp_name": "ili9341",
+        "Touch": "xpt2046",
+        "flash": "4MB"
+    },
+    {
+        "basename": "wt-86-32-3zw1",
+        "flash": "16MB"
+    },
+    {
+        "basename": "wt32-sc01-plus",
+        "flash": "8MB"
+    },
+    {
+        "basename": "wt32-sc01",
+        "flash": "16MB"
+    },
+    {
+        "basename": "wt32-sc01",
+        "flash": "4MB"
+    },
+    {
+        "basename": "nscreen32",
+        "Touch": "gt911",
+        "flash": "16MB"
+    },
+    {}
+]
     ];
     
     // let the grid know which columns and what data to use
     var gridOptions = {
       columnDefs: columnDefs,
-      rowData: rowData
+      rowData: rowData,
+      enableSorting: true,
+      enableFilter: true
     };
 
   // lookup the container we want the Grid to use
