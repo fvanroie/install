@@ -24,9 +24,15 @@ def create_manifest():
                 builds = []
                 if "gs-t3e" in base:
                     builds.append({ "chipFamily": "ESP32-S3", "improv": False })
-                elif "wt32-sc01-plus" in base:
+                elif "sunton-4827" in base:
                     builds.append({ "chipFamily": "ESP32-S3", "improv": False })
                 elif "sunton-8048" in base:
+                    builds.append({ "chipFamily": "ESP32-S3", "improv": False })
+                elif "ttgo-t7-s3" in base:
+                    builds.append({ "chipFamily": "ESP32-S3", "improv": False })
+                elif "wt-86-32-3zw1" in base:
+                    builds.append({ "chipFamily": "ESP32-S2", "improv": False })
+                elif "wt32-sc01-plus" in base:
                     builds.append({ "chipFamily": "ESP32-S3", "improv": False })
                 else:
                     builds.append({ "chipFamily": "ESP32", "improv": False })
