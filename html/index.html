@@ -130,7 +130,7 @@
     <h1>openHASP Nightly Development Build</h1>
 
     <p>Version: <select id="version" name="version">
-      <option value="v0.6.4-dev_bdceca3">v0.6.4-dev (bdceca3) 2022-11-24</option>      
+      <option value="v0.6.4-dev_41ac2e1">v0.6.4-dev (41ac2e1) 2022-11-24</option>      
     </select></p>
 
     <div>
@@ -236,7 +236,7 @@
               row.querySelectorAll('select[class="flash"]').forEach(function(select) {
                 select.options.item(0).value = '16MB';
               });
-              
+
             } else if (firmware.startsWith("esp32-2432")||firmware.startsWith("esp32-3248")) {
               row.querySelectorAll('span[class="flash"]').forEach(function(span) {
                 span.innerHTML = '4 MB';
