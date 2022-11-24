@@ -26,6 +26,8 @@ def create_manifest():
                     builds.append({ "chipFamily": "ESP32-S3", "improv": False })
                 elif "wt32-sc01-plus" in base:
                     builds.append({ "chipFamily": "ESP32-S3", "improv": False })
+                elif "sunton-8048" in base:
+                    builds.append({ "chipFamily": "ESP32-S3", "improv": False })
                 else:
                     builds.append({ "chipFamily": "ESP32", "improv": False })
                 parts = []
