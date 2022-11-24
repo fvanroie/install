@@ -110,7 +110,7 @@
   }
   @media (prefers-color-scheme: dark) {
     body {
-      background-color: rgb(62, 58, 46);
+      background-color: rgb(39, 37, 31);
       color: #fff;
     }
   }
@@ -152,7 +152,7 @@
           <tr><td>Lolin D32 Pro v2<select hidden name="firmware"><option value="lolin-d32-pro">lolin-d32-pro</option></select></td><td>16 MB<select hidden class="flash" ><option value="16MB">16 MB</option></select></td><td>ILI9341<select hidden class="display" ><option value="ILI9341">ILI9341</option></select></td><td>XPT2406</td></tr>
           <tr><td>M5Stack Core2<select hidden name="firmware"><option value="m5stack-core2">m5stack-core2</option></select></td><td>16 MB<select hidden class="flash" ><option value="16MB">16 MB</option></select></td><td>ILI9342C<select hidden class="display" ><option value=""></option></select></td><td>FT6336U</td></tr>
           <tr><td>Makerfabs TFT Touch<select hidden name="firmware"><option value="makerfabs-tft35-cap">makerfabs-tft35-cap</option></select></td><td>16 MB<select hidden class="flash" ><option value="16MB">16 MB</option></select></td><td>ILI9488<select hidden class="display" ><option value=""></option></select></td><td>FT6236</td></tr>
-          <tr><td>Sunton <select name="firmware"><option value="esp32-2432s028r">2432S028R</option><option value="esp32-3248s035c">3248S035C</option><option value="esp32-3248s035r">3248S035R</option><option value="sunton-8048s043c">8048S043C</option><option value="sunton-8048s050c">8048S050C</option><option value="sunton-8048s070c">8048S070C</option></select></td><td>4 MB<select hidden class="flash" ><option value="4MB">4 MB</option></select></td><td>ILI9341<select hidden class="display" ><option value=""></option></select></td><td>XPT2406</td></tr>
+          <tr><td>Sunton <select name="firmware"><option value="esp32-2432s028r">2432S028R</option><option value="esp32-3248s035c">3248S035C</option><option value="esp32-3248s035r">3248S035R</option><option value="sunton-8048s043c">8048S043C</option><option value="sunton-8048s050c">8048S050C</option><option value="sunton-8048s070c">8048S070C</option></select></td><td><span class="flash">4 MB</span><select hidden class="flash" ><option value="4MB">4 MB</option></select></td><td>ILI9341<select hidden class="display" ><option value=""></option></select></td><td>XPT2406</td></tr>
           <tr><td>TTGO T7 v1.5<select hidden name="firmware"><option value="ttgo-t7-v1.5">ttgo-t7-v1.5</option></select></td><td><select class="flash" ><option value="4MB">4 MB</option><option value="16MB">16 MB</option></select></td><td>ILI9341<select hidden class="display" ><option value="ILI9341">ILI9341</option></select></td><td>XPT2406</td></tr>
           <tr><td>WT32-SC01<select hidden name="firmware"><option value="wt32-sc01">wt32-sc01</option></select></td><td><select  class="flash" ><option value="4MB">4 MB</option><option value="16MB">16 MB</option></select></td><td>ST7796<select hidden class="display" ><option value=""></option></select></td><td>FT6336U</td></tr>
           <tr><td>WT32-SC01 Plus<select hidden name="firmware"><option value="wt32-sc01-plus">wt32-sc01-plus</option></select></td><td>8 MB<select hidden class="flash" ><option value="8MB">8 MB</option></select></td><td>ST7796<select hidden class="display" ><option value=""></option></select></td><td>FT6336U</td></tr>
@@ -223,12 +223,29 @@
               row.querySelectorAll('span[class="display"]').forEach(function(span) {
                 span.innerHTML = 'ILI9341';
               });
-            }
-            if (firmware == 'huzzah32-featherwing-35') {
+
+            } else if (firmware == 'huzzah32-featherwing-35') {
               row.querySelectorAll('span[class="display"]').forEach(function(span) {
                 span.innerHTML = 'HX8357D';
               });
+
+            } else if (firmware.startsWith("sunton-8048")) {
+              row.querySelectorAll('span[class="flash"]').forEach(function(span) {
+                span.innerHTML = '16 MB';
+              });
+              row.querySelectorAll('select[class="flash"]').forEach(function(select) {
+                select.options.item(0).value = '16MB';
+              });
+              
+            } else if (firmware.startsWith("esp32-2432")||firmware.startsWith("esp32-3248")) {
+              row.querySelectorAll('span[class="flash"]').forEach(function(span) {
+                span.innerHTML = '4 MB';
+              });
+              row.querySelectorAll('select[class="flash"]').forEach(function(select) {
+                select.options.item(0).value = '4MB';
+              });
             }
+
 
           });
         });
