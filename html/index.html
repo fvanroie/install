@@ -12,6 +12,7 @@
     <script type="module" src="https://unpkg.com/esp-web-tools@8.0.2/dist/web/install-button.js?module"></script>
     <script src="./installer.js"></script>
 
+    <link rel="stylesheet" href="admonition.css">
     <style>
     body {
       font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, sans-serif;
@@ -121,6 +122,7 @@
   .display{
     width:100%;
   }
+
   </style>
 </head>
 
@@ -128,8 +130,21 @@
   <div class="content">
     <h1>openHASP Nightly Development Build</h1>
 
+    <div class="admonition warning">
+      <div class="title">IMPORTANT</div>
+      <div class="content">
+        The internal flash partition layout of openHASP 0.7.0 has changed!</br>
+        Follow the <a href="https://www.openhasp.com/0.7.0/firmware/firmware-update/#serial-update">Serial Update procedure</a> if you are currently running v0.6.x.
+      <ul>
+        <li>Devices coming from 0.6.x with <b>4MB flash will be reformatted</b> and <b>loose all data</b>!!!</li>
+        <li>Devices with 8MB flash or more <i>should</i> retain the filesystem and user configuration.</li>
+      </ul>
+        It is recommended to create a backup of your files before upgrading.
+      </div>
+    </div>
+
     <p>Version: <select id="version" name="version">
-      <option value="v0.7.0-rc1_e783544">v0.7.0-rc1 (e783544) 2023-02-25</option>      
+      <option value="v0.7.0-rc2_3ab88a3">v0.7.0-rc2 (3ab88a3) 2023-03-20</option>      
     </select></p>
 
     <div>
@@ -166,8 +181,6 @@
       </p>
 
       <div class="container" id="support">Chrome and Edge support flashing devices online from within the browser window.</br>Please use another browser or click 'Download' to flash the firmware offline.</div>
-
-
 
       <div class="container" id="inst-button">
         <esp-web-install-button id="inst" manifest="assets/json/d1-mini-esp32_ili9341_full_4MB.json" hide-progress>
