@@ -1,0 +1,19 @@
+{
+    "name": "openHASP",
+    "version": "v0.7.0",
+    "home_assistant_domain": "openhasp",
+    "funding_url": "https://ko-fi.com/openhasp",
+    "new_install_prompt_erase": true,
+    "builds": [
+        {
+            "chipFamily": "ESP32",
+            "improv": false,
+            "parts": [
+                {
+                    "path": "makerfabs-s3-tft40-rgb_full_16MB_v0.7.0-rc5_8c8a7eb.bin",
+                    "offset": 0
+                }
+            ]
+        }
+    ]
+}
