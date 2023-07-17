@@ -10,7 +10,7 @@
             "improv": false,
             "parts": [
                 {
-                    "path": "d1-mini-esp32_ili9341_full_4MB_v0.7.0-rc5_8c8a7eb.bin",
+                    "path": "d1-mini-esp32_ili9341_full_4MB_v0.7.0-rc4_f76dee8.bin",
                     "offset": 0
                 }
             ]
