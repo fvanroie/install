@@ -6,11 +6,11 @@
     "new_install_prompt_erase": true,
     "builds": [
         {
-            "chipFamily": "ESP32-S3",
+            "chipFamily": "ESP32",
             "improv": false,
             "parts": [
                 {
-                    "path": "sunton-8048s050c_full_16MB_v0.7.0-rc6_dbe3d7e.bin",
+                    "path": "esp-terminal-spi_full_16MB_v0.7.0-rc6_dbe3d7e.bin",
                     "offset": 0
                 }
             ]
