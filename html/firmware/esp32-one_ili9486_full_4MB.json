@@ -10,7 +10,7 @@
             "improv": false,
             "parts": [
                 {
-                    "path": "esp32-one_ili9486_full_4MB_v0.7.0-rc11_ce99b81.bin",
+                    "path": "esp32-one_ili9486_full_4MB_v0.7.0-rc11_677e8cc.bin",
                     "offset": 0
                 }
             ]
