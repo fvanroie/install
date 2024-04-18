@@ -1,0 +1,19 @@
+{
+    "name": "openHASP",
+    "version": "v0.7.0",
+    "home_assistant_domain": "openhasp",
+    "funding_url": "https://ko-fi.com/openhasp",
+    "new_install_prompt_erase": true,
+    "builds": [
+        {
+            "chipFamily": "ESP32-S3",
+            "improv": false,
+            "parts": [
+                {
+                    "path": "sunton-8048s070c_full_16MB_v0.7.0-rc12_c27c8b6.bin",
+                    "offset": 0
+                }
+            ]
+        }
+    ]
+}
