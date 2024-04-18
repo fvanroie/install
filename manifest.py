@@ -32,6 +32,8 @@ def create_manifest():
                     builds.append({ "chipFamily": "ESP32-S3", "improv": False })
                 elif "seeed" in base:
                     builds.append({ "chipFamily": "ESP32-S3", "improv": False })
+                elif "sensecap-indicator-d1" in base:
+                    builds.append({ "chipFamily": "ESP32-S3", "improv": False })
                 elif "sunton-4827" in base:
                     builds.append({ "chipFamily": "ESP32-S3", "improv": False })
                 elif "sunton-8048" in base:
