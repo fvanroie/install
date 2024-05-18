@@ -24,11 +24,13 @@ def create_manifest():
                 builds = []
                 if "gs-t3e" in base:
                     builds.append({ "chipFamily": "ESP32-S3", "improv": False })
-                elif "panlee" in base:
-                    builds.append({ "chipFamily": "ESP32-S3", "improv": False })
                 elif "esp32-s3-" in base:
                     builds.append({ "chipFamily": "ESP32-S3", "improv": False })
                 elif "elecrow-s3-" in base:
+                    builds.append({ "chipFamily": "ESP32-S3", "improv": False })
+                elif "makerfabs-s3-" in base:
+                    builds.append({ "chipFamily": "ESP32-S3", "improv": False })
+                elif "panlee" in base:
                     builds.append({ "chipFamily": "ESP32-S3", "improv": False })
                 elif "seeed" in base:
                     builds.append({ "chipFamily": "ESP32-S3", "improv": False })
